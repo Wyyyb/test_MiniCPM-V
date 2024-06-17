@@ -9,8 +9,8 @@ model = model.to(device='mps')
 tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-Llama3-V-2_5', trust_remote_code=True)
 model.eval()
 
-image = Image.open('./assets/hk_OCR.jpg').convert('RGB')
-question = 'Where is this photo taken?'
+image = Image.open('test_data/test_0614_1.png').convert('RGB')
+question = 'Parse and extract the table information from the image.'
 msgs = [{'role': 'user', 'content': question}]
 
 answer, context, _ = model.chat(
@@ -21,3 +21,5 @@ answer, context, _ = model.chat(
     sampling=True
 )
 print(answer)
+
+
